@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bae8.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        
+            <a href="#" class="logo"><img src="static/logo/budur_2.png"width="70" height="70"><span></span></a>
+            
+            <div class="navbar" id="navbar">
+                    <a class="for" bar="true" href="/index">Ana Sayfa</a>
+                
+                    
+                    
+              
+                    
+            </div>
+            <form action="/urunara" method="GET">
+        
+                <input placeholder="Ürün Ara..." id="sinput" class="search-input" type="text" name="urun" required minlength="2">
+                <button class="search-button" type="submit" class="search"><i class='bx bx-search-alt-2'></i></button>
+
+            </form>
+        
+                {%if user.is_authenticated%}
+
+                <div class="navbar2" >
+                <div class="main">
+                    <a bar="true" href="">{{user.get_full_name}}</a>
+                    <a bar="true" href="{%url 'logout'%}">Çıkış Yap</a>
+                    <div class="bx bx-menu" id="menu-icon"></div>
+                </div>       
+            </div>     
+                {%else%}
+                <div class="navbar3" >
+                <div class="main">
+                    <a bar="true" class="for" href="/login" class="user"></i>Giriş Yap</a>
+                    <a class="for" bar="true" href="/register">Kayıt Ol</a>
+                   
+                </div>
+            </div>
+            
+    {%endif%}
+        
+            <div class="bx bx-menu" id="menu-icon"></div>
+   
+    </header>
+    
+
+{% block content %}{% endblock %}
+    
+<script>
+
+
+    
+   
+    
+    var barheight=document.getElementById("header").offsetHeight;
+    var barheight = barheight;
+    var col= document.querySelector("body");;
+    col.style.paddingTop = barheight + "px";
+    let current_url = document.location;
+    document.querySelectorAll(".header .for").forEach(function(e){
+        
+        if(e.href == current_url){
+            e.classList += "_current";
+           
+        }
+        
+
+
+    });
+    
+
+
+    </script>
+</body>
+</html>
+

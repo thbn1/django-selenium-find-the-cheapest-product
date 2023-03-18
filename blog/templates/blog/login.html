@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+{%block content%}
+<div id="col">
+    <div class="logregdiv">
+    <div class="container">
+        <h1 class="top-bar">Giriş Yap</h1>
+        <hr class="logregline">
+        <form method="POST">
+
+            {%csrf_token%}
+            {%if error%}
+            <div class="alert-danger">
+                <p class="alert">{{error}}</p>
+            </div>
+            {%endif%}
+            <div class="row">
+
+            </div>
+            <div class="mb-3">
+                <label for="username" class"form-label">Kullanıcı Adı : </label>
+                <input type="text" class="form-control" name="username">
+            </div>
+
+            <div class="mb-5">
+                <label for="password" class"form-label">Şifre : </label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+            <div class="mb-7">
+                <input type="submit" value="Giriş" class="btn btn-primary">
+            </div>
+            <div class="mb-8">
+            <a class="loginref" href="/register">Üyeliğin Yok mu?</a>
+            <a class="pwref" href="/login">Şifremi Unuttum</a>
+            </div>
+        </form>
+        
+    </div>
+</div>
+</div>
+        
+
+{%endblock%}

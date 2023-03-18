@@ -1,0 +1,55 @@
+{%extends "base.html"%}
+{%block content%}
+
+<div id="col">
+    <div class="logregdiv">
+    <div  class="container-reg">
+        <h1 class="top-bar">Kayıt Ol</h1>
+        <hr class="logregline">
+        <form method="POST">
+
+            {%csrf_token%}
+            {%if error%}
+            <div class="alert-danger">
+                <p class="alert">{{error}}</p>
+            </div>
+            {%endif%}
+            <div class="row">
+                <div class="mb-1">
+                    <label for="firstname" class"form-label">Adınız : </label>
+                    <input type="text" class="form-control" name="firstname">
+                </div>
+
+                <div class="mb-2">
+                    <label for="lastname" class"form-label">Soy Adınız : </label>
+                    <input type="text" class="form-control" name="lastname">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="username" class"form-label">Kullanıcı Adı : </label>
+                <input type="text" class="form-control" name="username">
+            </div>
+
+
+            <div class="mb-5">
+                <label for="password" class"form-label">Şifre : </label>
+                <input type="password" class="pw"placeholder="Şifreniz: test123" class="form-control" name="password" disabled>
+            </div>
+            <div class="mb-6">
+                <label for="repassword" class"form-label">Şifre (tekrar) : </label>
+                <input type="password" class="pw"  placeholder="test sitesidir" class="form-control" name="repassword" disabled>
+            </div>
+            <div class="mb-7">
+                <input type="submit" value="Kayıt Ol" class="btn btn-primary">
+            </div>
+            <div class="mb-8">
+            <a class="loginref" href="/login">Zaten üyeliğin var mı?</a>
+      
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+    
+
+{%endblock%}
