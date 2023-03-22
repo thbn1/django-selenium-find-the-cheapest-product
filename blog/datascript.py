@@ -73,28 +73,28 @@ for br in brands:
         pd2=br.replace(" ","%20")
         link="https://www.hepsiburada.com/ara?q="+pd2+"&sayfa="+str(x)
         driver.get(link)
-        time.sleep(0.5)
+        time.sleep(0.3)
         driver.execute_script("window.scrollTo(0,500)")
-        time.sleep(0.2)
+        time.sleep(0.1)
         driver.execute_script("window.scrollTo(500,1000)")
-        time.sleep(0.2)
+        time.sleep(0.1)
         driver.execute_script("window.scrollTo(1000,1500)")
-        time.sleep(0.2)
+        time.sleep(0.1)
         driver.execute_script("window.scrollTo(1500,2000)")
-        time.sleep(0.2)
+        time.sleep(0.1)
         driver.execute_script("window.scrollTo(2000,2500)")
-        time.sleep(0.2)
+        time.sleep(0.1)
 
         print("1")
             
      
-        
-        p_class= driver.find_elements(By.XPATH, '//li[@class="productListContent-zAP0Y5msy8OHn5z7T_K_"]')[0:24]
+        try:
+            p_class= driver.find_elements(By.XPATH, '//li[@class="productListContent-zAP0Y5msy8OHn5z7T_K_"]')[0:24]
+        except:break
 
 
-        
-        if x==1:
-            page1product1=driver.find_element(By.XPATH,'//ul/li/div/a[@href]').get_attribute('href')    
+        if len(p_class)==0:
+            break
         l=0                                                  
         for product in p_class:
             print("---------------")

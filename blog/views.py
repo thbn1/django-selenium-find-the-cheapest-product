@@ -27,11 +27,12 @@ def index(request):
  
            
             plist=str(price).split(".")
-            try:
-                plist[0]= plist[0][:-3]+"."+plist[0][-3:] 
-            except:
-                pass
-            
+            if len(plist[0])>3:
+                try:
+                    plist[0]= plist[0][:-3]+"."+plist[0][-3:] 
+                except:
+                    pass
+                
             price=",".join(plist)+"TL"
             return price
 
@@ -49,7 +50,7 @@ def index(request):
         <label class="lblpopular">Popüler Ürünler</label>
         </div>
         <div class="homeprdct">
-            <div target="_blank" class="homeprd"><img src="""+listphone[0]["Product_image"]+"""><a href="""+listphone[0]["Product_link"]+""">"""+listphone[0]["Product_name"].title()+"""</a><div class="pricediv"><label class="pprice">"""+a(listphone[0]["Product_price"])+"""</label></div></div>
+            <div target="_blank" class="homeprd"><img src="""+listphone[0]["Product_image"]+"""><a href="""+listphone[0]["Product_link"]+""">"""+listphone[0]["Product_name"].title()+"""</a><div class="pricediv"><b class="pprice">"""+a(listphone[0]["Product_price"])+"""</b></div></div>
             <div class="homeprd"><img src="""+listphone[1]["Product_image"]+"""><a href="""+listphone[1]["Product_link"]+">"+listphone[1]["Product_name"].title()+"""</a><div class="pricediv"><label class="pprice">"""+a(listphone[0]["Product_price"])+"""</label></div></div>
             <div class="homeprd"><img src="""+listphone[2]["Product_image"]+"""><a href="""+listphone[2]["Product_link"]+">"+listphone[2]["Product_name"].title()+"""</a><div class="pricediv"><label class="pprice">"""+a(listphone[0]["Product_price"])+"""</label></div></div>
             <div class="homeprd"><img src="""+listphone[3]["Product_image"]+"""><a href="""+listphone[3]["Product_link"]+">"+listphone[3]["Product_name"].title()+"""</a><div class="pricediv"><label class="pprice">"""+a(listphone[0]["Product_price"])+"""</label></div></div>
@@ -132,7 +133,7 @@ def urunara(request):
    
     context ={}
     context['form']= ProductForm()
- 
+
     import os
     import re
     import sys      
@@ -217,11 +218,14 @@ def urunara(request):
  
            
             plist=str(price).split(".")
-            try:
-                plist[0]= plist[0][:-3]+"."+plist[0][-3:] 
-            except:
-                pass
-            
+           
+
+            if len(plist[0])>3:
+                try:
+                    plist[0]= plist[0][:-3]+"."+plist[0][-3:] 
+                except:
+                    pass
+                
             price=",".join(plist)+"TL"
             return price
 
@@ -281,7 +285,7 @@ def urunara(request):
             source="/static/logo/"+m[5]+".jpg"
             htmtext+='<tr>\n'
             htmtext+='<td class="productimg"><img id="myImg" onclick="replyclick(this.src)"  src="'+str(m[4])+'"></td>\n'
-            htmtext+='<td class="prdname"><a target="_blank" href="'+str(m[3]).title()+'">'+str(m[1])+'<a></td>\n'
+            htmtext+='<td class="prdname"><a target="_blank" href="'+str(m[3])+'">'+str(m[1]).title()+'<a></td>\n'
 
             htmtext+='<td    class="price">'+a(m[2])+'</td>\n'
 
