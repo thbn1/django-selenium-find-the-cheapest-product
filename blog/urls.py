@@ -19,5 +19,4 @@ urlpatterns=[
     path("logout",views.logout_request, name="logout"),
 
 ]
-
 urlpatterns += staticfiles_urlpatterns()

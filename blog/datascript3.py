@@ -62,7 +62,7 @@ for br in brands:
     while True:
         x+=1
         pd2=br.replace(" ","%20")
-        link="https://www.trendyol.com/sr?q="+pd2+"&pi="+str(x)
+        link="https://www.trendyol.com/sr?q="+"Galaxy S22"+"&pi="+str(x)
         driver.get(link)
         driver.execute_script("document.body.style.zoom='25%'")
         time.sleep(1.5)
