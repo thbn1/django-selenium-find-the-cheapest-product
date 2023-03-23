@@ -21,7 +21,7 @@ driver=webdriver.Chrome(options=options)
 
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","oneplus","jbl","sony","steelseries","sennheiser","msi","lenovo","razer","logitech","philips","monster","hp","asus","benq","casper",
 "acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel","xp"]
-brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell"]
+brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell","asus"]
 
 products=[]
 products=[]
@@ -69,7 +69,7 @@ for br in brands:
                 picurl=pic.get_attribute('src')
                 url=product.find_element(By.XPATH,'.//a[@class="a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"]')
                 link= url.get_attribute('href')
-                link=link.split("/ref=")[0]
+                link=link.split("/ref=")[0].split("%2Fref")[0]
 
                 
                 
@@ -80,7 +80,7 @@ for br in brands:
                     pic= product.find_element(By.XPATH,'.//div/div/div/div/div/span/a/div/img[@src]')
                     picurl=pic.get_attribute('src')
                     url=product.find_element(By.XPATH,'.//a[@class="a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal"]')
-                    link= url.get_attribute('href').split("/ref=")[0]
+                    link= url.get_attribute('href').split("/ref=")[0].split("%2Fref")[0]
                     
 
 

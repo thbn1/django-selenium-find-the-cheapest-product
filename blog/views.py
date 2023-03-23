@@ -88,7 +88,7 @@ def index(request):
 
 
         </div>
-        
+        <hr class="topline">
         <div class="divelectronic">
         <label class="lblelectronic">Elektronik</label>
         </div>
@@ -130,7 +130,7 @@ def kayit(request):
 
 def urunara(request):
 
-   
+
     context ={}
     context['form']= ProductForm()
 
@@ -250,7 +250,8 @@ def urunara(request):
                     if i not in str(m[4][0:46]):
                         breakfor=True
                     
-
+            ###### geçici
+            ###### geçici /
                 
 
             if breakfor==True:

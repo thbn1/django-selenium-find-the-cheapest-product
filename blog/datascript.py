@@ -52,9 +52,9 @@ driver=webdriver.Chrome(options=options)
 driver.execute_script("document.body.style.zoom='50%'")
 
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","oneplus","jbl","sony","steelseries","sennheiser","msi","lenovo","razer","logitech","philips","monster","hp","asus","benq","casper",
-"acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel","xp"]
-brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell"]
-brands=["asus"]
+"acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel"]
+brands=["samsung","apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell","asus"]
+
 products=[]
 product_data=[]
 list1=[]  
@@ -62,7 +62,7 @@ list2=[]
 list3=[]
 
     
-
+firstelement=""
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -70,10 +70,12 @@ page1product1=""
 for br in brands:
     x=0
     z=1
+    y=0
     while z==1:
         x+=1
         pd2=br.replace(" ","%20")
         link="https://www.hepsiburada.com/ara?q="+pd2+'&markalar='+pd2.lower()+"&sayfa="+str(x)+"&ic=t"
+        #link="https://www.hepsiburada.com/ara?q=galaxy%20a04e'&markalar=Samsung&sayfa="+str(x)
         "https://www.hepsiburada.com/ara?q=Samsung&markalar=samsung"
      
         driver.get(link)
@@ -91,19 +93,21 @@ for br in brands:
 
         print("1")
             
-     
+        
         try:
             p_class= driver.find_elements(By.XPATH, '//li[@class="productListContent-zAP0Y5msy8OHn5z7T_K_"]')[0:24]
         except:break
 
-
         if len(p_class)==0:
             break
-        if x==1:
-            firstelement=p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href')
-        else:
-            if p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href')==firstelement:
-                break
+        if firstelement == p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href'):
+            y+=1
+        if y==3:
+            break
+        
+        
+        firstelement=p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href')
+
             
         l=0                                                  
         for product in p_class:
@@ -118,6 +122,9 @@ for br in brands:
                 picurl=pic.get_attribute('src')
                 url=product.find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]')
                 link=url.get_attribute('href')  
+                "https%3A%2F%2Fwww.hepsiburada.com%2Fsamsung-galaxy-a04e-128-gb-4-gb-ram-samsung-turkiye-garantili-p-HBCV00003LC1OV%3Fmagaza%3DHepsiburada&eventName=sp-click&platform=desktop"
+                if "https://adservice.hepsiburada.com" in link:
+                    link=link.split("redirect=")[-1].replace("%2F","/").replace("%3A",":").replace("%3F","?").replace("%3D","=")
                 site="HepsiBurada"
                 print(picurl)
                 print(link)
@@ -131,6 +138,7 @@ for br in brands:
             
                         #product = Products(Product_name=info,Product_price=price,Product_link=link,Product_image=picurl,Product_site=site) # create new model instance
             Products.objects.update_or_create(Product_link=link,defaults={"Product_name":info,"Product_price":price,"Product_link":link,"Product_image":picurl,"Product_site":site}) 
+            print("basarili")
             
         print("3")
         print("3")
