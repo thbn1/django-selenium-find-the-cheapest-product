@@ -22,7 +22,7 @@ driver=webdriver.Chrome(options=options)
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","oneplus","jbl","sony","steelseries","sennheiser","msi","lenovo","razer","logitech","philips","monster","hp","asus","benq","casper",
 "acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel","xp"]
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell","asus"]
-
+linklist=["s?i=computers&bbn=12466440031&rh=n%3A12601898031","s?i=electronics&rh=n%3A13709907031","s?i=electronics&rh=n%3A13709898031"]###
 products=[]
 products=[]
 product_data=[]
@@ -37,13 +37,16 @@ list3=[]
 
 
 page1product1=""
-for br in brands:
+#for br in brands:
+for ll in linklist: ###
     x=0
     
     while True:
         x+=1
-        pd2=br.replace(" ","+")
-        link1="https://www.amazon.com.tr/s?k="+pd2+"&rh=n%3A12466496031%2Cp_89%3A"+pd2+"&dc&page="+str(x)
+        #pd2=br.replace(" ","+")
+        
+        #link1="https://www.amazon.com.tr/s?k="+pd2+"&rh=n%3A12466496031%2Cp_89%3A"+pd2+"&dc&page="+str(x)
+        link1="https://www.amazon.com.tr/"+ll+"&fs=true&page="+str(x)###
         "https://www.amazon.com.tr/s?k=casper&i=all&rh=n%3A12466496031%2Cp_89%3Acasper&dc&page=5"
         "https://www.amazon.com.tr/s?k=casper&i=all&rh=n%3A12466439031%2Cp_89%3ACasper&dc&page=6"
         driver.get(link1)

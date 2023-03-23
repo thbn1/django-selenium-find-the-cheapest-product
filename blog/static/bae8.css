@@ -162,7 +162,7 @@ body{
     
     margin-bottom: 50%;
     font-weight: 650;
-    padding-top: 20px;
+    padding-top: 10px;
 
   }
   .pricediv{
@@ -459,9 +459,11 @@ table a{
   }
 
   .homeprd img{ 
-    height:105px;
+    height:125px;
     left:50%;
     padding-top: 15px;
+    max-width:160px;
+    max-height:300px;
 
     
   }
