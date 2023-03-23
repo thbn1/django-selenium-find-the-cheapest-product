@@ -21,6 +21,8 @@ driver=webdriver.Chrome(options=options)
 
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","oneplus","jbl","sony","steelseries","sennheiser","msi","lenovo","razer","logitech","philips","monster","hp","asus","benq","casper",
 "acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel","xp"]
+brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell"]
+
 products=[]
 products=[]
 product_data=[]
@@ -41,8 +43,11 @@ for br in brands:
     while True:
         x+=1
         pd2=br.replace(" ","+")
-        link="https://www.amazon.com.tr/s?k="+pd2+"&rh=n%3A12466496031%2Cp_89%3A"+pd2+"&page="+str(x)
-        driver.get(link)
+        link1="https://www.amazon.com.tr/s?k="+pd2+"&rh=n%3A12466496031%2Cp_89%3A"+pd2+"&dc&page="+str(x)
+        "https://www.amazon.com.tr/s?k=casper&i=all&rh=n%3A12466496031%2Cp_89%3Acasper&dc&page=5"
+        "https://www.amazon.com.tr/s?k=casper&i=all&rh=n%3A12466439031%2Cp_89%3ACasper&dc&page=6"
+        driver.get(link1)
+        print(link1)
         while True:
             try:
 
@@ -83,7 +88,7 @@ for br in brands:
                     continue
             site="Amazon"
             print((info,price,link,picurl,site))
-
+            print(link1)
             Products.objects.update_or_create(Product_link=link,defaults={"Product_name":info,"Product_price":price,"Product_link":link,"Product_image":picurl,"Product_site":site}) 
         if len(p_class)==0:
             break

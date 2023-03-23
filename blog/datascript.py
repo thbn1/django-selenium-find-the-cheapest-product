@@ -53,6 +53,8 @@ driver.execute_script("document.body.style.zoom='50%'")
 
 brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","oneplus","jbl","sony","steelseries","sennheiser","msi","lenovo","razer","logitech","philips","monster","hp","asus","benq","casper",
 "acer","aoc","dell","canon","anker","nikon","everest","gamepower","bosch","fakir","general mobile","htc","intel","microsoft","nokia","toshiba","kingston","hyperx","vestel","xp"]
+brands=["samsung", "apple", "xiaomi", "huawei", "oppo","lg","msi","lenovo","razer","logitech","philips","monster","acer","aoc","dell"]
+brands=["asus"]
 products=[]
 product_data=[]
 list1=[]  
@@ -71,7 +73,9 @@ for br in brands:
     while z==1:
         x+=1
         pd2=br.replace(" ","%20")
-        link="https://www.hepsiburada.com/ara?q="+pd2+"&sayfa="+str(x)
+        link="https://www.hepsiburada.com/ara?q="+pd2+'&markalar='+pd2.lower()+"&sayfa="+str(x)+"&ic=t"
+        "https://www.hepsiburada.com/ara?q=Samsung&markalar=samsung"
+     
         driver.get(link)
         time.sleep(0.3)
         driver.execute_script("window.scrollTo(0,500)")
@@ -95,6 +99,12 @@ for br in brands:
 
         if len(p_class)==0:
             break
+        if x==1:
+            firstelement=p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href')
+        else:
+            if p_class[0].find_element(By.XPATH,'.//a[contains(@class,"moria-ProductCard")]').get_attribute('href')==firstelement:
+                break
+            
         l=0                                                  
         for product in p_class:
             print("---------------")

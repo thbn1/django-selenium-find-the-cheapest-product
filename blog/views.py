@@ -241,22 +241,18 @@ def urunara(request):
             #{% static 'logo/image.ext' %}
             cntname=m[1].replace(","," ").replace("'"," ").replace('"'," ").replace("-"," ").replace("+"," ").replace(";"," ").replace("."," ").replace("*"," ").split()
             wordcontrol=False
-            linklist=["https://www.trendyol.com/","https://www.hepsiburada.com/","https://www.amazon.com.tr/","https://cdn.dsmcdn.com/","https://productimages.hepsiburada.net/","https://m.media-amazon.com/"]
+            linklist=["https://www.trendyol.com/","https://www.hepsiburada.com/","https://www.amazon.com.tr/","https://cdn.dsmcdn.com/","https://productimages.hepsiburada.net/","https://m.media-amazon.com/","https://adservice.hepsiburada.com/"]
             breakfor=False
             for i in linklist:
                 if i in str(m[4][0:46]):
                     break
-                
-                if i=="https://m.media-amazon.com/":
+                if i==linklist[-1]:
                     if i not in str(m[4][0:46]):
                         breakfor=True
-            for i in linklist:
-                if i in str(m[3][0:46]):
-                    break
+                    
+
                 
-                if i=="https://m.media-amazon.com/":
-                    if i not in str(m[3][0:46]):
-                        breakfor=True  
+
             if breakfor==True:
                 continue
                         
