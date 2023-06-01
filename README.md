@@ -6,8 +6,9 @@ We have a script name as "datascript".
 - [Hepsiburada script](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/datascript.py)
 - [Amazon script](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/datascript2.py)
 - [Trendyol script](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/datascript3.py)     
-The script adds products from shopping site to Django's database with Selenium. If you search something in site, it filters products with tha
-### Codes from filter([view.py](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/views.py)):
+The script adds products from shopping site to Django's database with Selenium. If you search something in site, it filters products with that name in the database. Incorrectly filtered products are eliminated in a separate filter on python.
+
+### Some codes from filter([view.py](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/views.py)):
 ```sh
     cursor.execute("SELECT * FROM blog_products WHERE Product_name LIKE "+productn)
     products2_df= pd.DataFrame(cursor.fetchall())
