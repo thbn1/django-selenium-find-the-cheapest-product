@@ -1,6 +1,6 @@
 # django-selenium-find-the-cheapest-product
 
- Product information is extracted from shopping sites with Selenium.  On the django-based website, the cheapest of the searched product is fi
+ Product information is extracted from shopping sites with Selenium.  On the django-based website.
 # How it works
 We have a script name as "datascript".  
 - [Hepsiburada script](https://github.com/thbn1/django-find-the-cheapest-product/blob/main/blog/datascript.py)
