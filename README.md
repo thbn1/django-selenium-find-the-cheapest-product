@@ -61,7 +61,4 @@ To run tests, run the following command
 python manage.py runserver
 ```
 Connect to http://localhost:8000
-## Authors
-- [@frknakbas65](https://www.github.com/frknakbas65)
-- [@thbn1](https://www.github.com/thbn1)
-z
+
